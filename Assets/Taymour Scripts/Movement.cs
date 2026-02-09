@@ -6,14 +6,25 @@ public class Movement : MonoBehaviour
     [Header("Movement Properties")]
     public float MovementSpeed = 10f;
 
-    private float MovementDirection;
+    private float movementDirection;
+    public float MovementDirection
+    {
+        set
+        {
+            movementDirection = value;
+        }
+        get
+        {
+            return movementDirection;
+        }
+    }
 
     private float FaceDirection = 1;
 
     [Header("The Physics properties for the bodies")]
 
     [Tooltip("Relax character's Physics")]
-    [SerializeField] private Rigidbody2D RelaxPlayer;
+    [SerializeField] private Rigidbody2D RelaxedPlayer;
 
     [Tooltip("Tension character's Physics")]
     [SerializeField] private Rigidbody2D TensionedPlayer;
@@ -26,20 +37,20 @@ public class Movement : MonoBehaviour
     [Tooltip("Relax character's transformation")]
     [SerializeField] private Transform RelaxTransform;
 
-    [Tooltip("Relax character's transformation")]
+    [Tooltip("Tension character's transformation")]
     [SerializeField] private Transform TensionTransform;
 
 
     // Update is called once per frame
     void Update()
     {
-        RelaxPlayer.sharedMaterial = wallFriction;
+        RelaxedPlayer.sharedMaterial = wallFriction;
         TensionedPlayer.sharedMaterial = wallFriction;
     }
 
     private void FixedUpdate()
     {
-        RelaxPlayer.linearVelocityX = MovementDirection * MovementSpeed;
+        RelaxedPlayer.linearVelocityX = MovementDirection * MovementSpeed;
 
         TensionedPlayer.linearVelocityX = MovementDirection * MovementSpeed;
     }

@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 110273753}
   - component: {fileID: 110273756}
   - component: {fileID: 110273755}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +423,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5.5325613
+  orthographic size: 6.61
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -560,7 +560,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 34
-    OrthographicSize: 5.5325613
+    OrthographicSize: 6.61
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -689,7 +689,7 @@ GameObject:
   - component: {fileID: 923139370}
   - component: {fileID: 923139373}
   - component: {fileID: 923139372}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -855,7 +855,7 @@ GameObject:
   - component: {fileID: 935144131}
   - component: {fileID: 935144134}
   - component: {fileID: 935144133}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,6 +1020,7 @@ GameObject:
   - component: {fileID: 1415816978}
   - component: {fileID: 1415816977}
   - component: {fileID: 1415816976}
+  - component: {fileID: 1415816979}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1040,7 +1041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
   MovementSpeed: 10
-  RelaxPlayer: {fileID: 1764953502}
+  RelaxedPlayer: {fileID: 1764953502}
   TensionedPlayer: {fileID: 2147398120}
   wallFriction: {fileID: 6200000, guid: ef3ed69f35ef92d4880f53717ce9c096, type: 2}
   RelaxTransform: {fileID: 1764953501}
@@ -1103,7 +1104,19 @@ MonoBehaviour:
     m_ActionId: 27c5f898-bc57-4ee1-8800-db469aca5fe3
     m_ActionName: 'Player/Crouch[/Keyboard/c]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1415816979}
+        m_TargetAssemblyTypeName: Jumping, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f1ba0d36-48eb-4cd5-b651-1c94a6531f70
     m_ActionName: 'Player/Jump[/Keyboard/space]'
   - m_PersistentCalls:
@@ -1181,6 +1194,26 @@ Transform:
   - {fileID: 392345710}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1415816979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415816975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 177caa7918827dd4ab7c02b409d42fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Jumping
+  JumpForce: 15
+  RelaxedPlayer: {fileID: 1764953502}
+  TensionedPlayer: {fileID: 2147398120}
+  boxSize: {x: 0.71, y: 0.55}
+  CastDistance: 0.55
+  Ground:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1764953498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,7 +1283,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.5773585, g: 0.016340235, b: 0.016340235, a: 1}
+  m_Color: {r: 0.23529413, g: 0.48627454, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1289,7 +1322,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 6
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1573,7 +1606,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.23600651, g: 0.4867924, b: 0, a: 1}
+  m_Color: {r: 0.4862745, g: 0.03260999, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1612,7 +1645,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 6
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

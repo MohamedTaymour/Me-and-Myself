@@ -1,0 +1,72 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class Jumping : MonoBehaviour
+{
+    //required elements for jumping
+
+    [Header("Jump Mechanics")]
+
+    [Tooltip("Determine both character's jump force")]
+    public float JumpForce = 10f;
+    private bool canJump;
+
+    [Tooltip("Relax character's Physics")]
+    [SerializeField] private Rigidbody2D RelaxedPlayer;
+
+    [Tooltip("Tension character's Physics")]
+    [SerializeField] private Rigidbody2D TensionedPlayer;
+
+    [Header("Check if Both characters touch ground")]
+    //Required Elements for isGrounded() check
+
+    [Tooltip("Represents the feet dimensions for both players")]
+    [SerializeField] private Vector2 boxSize;
+
+    [Tooltip("Shows the feet position length")]
+    [SerializeField] private float CastDistance;
+
+    [Tooltip("Allows the game to identify what is the ground")]
+    [SerializeField] private LayerMask Ground;
+
+    void FixedUpdate()
+    {
+        if(canJump && IsGrounded())
+        {
+            RelaxedPlayer.linearVelocityY = JumpForce;
+            TensionedPlayer.linearVelocityY = JumpForce;
+        }
+    }
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            canJump = true;
+        }
+        else
+        {
+            canJump = false;
+        }    
+    }
+
+    public bool IsGrounded()
+    {
+        Vector2 relaxGround = new (RelaxedPlayer.position.x, RelaxedPlayer.position.y - CastDistance);
+        Vector2 tensionGround = new (TensionedPlayer.position.x, TensionedPlayer.position.y - CastDistance);
+
+        if (Physics2D.OverlapBox(relaxGround,boxSize,0,Ground) && Physics2D.OverlapBox(tensionGround, boxSize, 0, Ground))
+            return true;
+        else
+            return false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(new Vector2(RelaxedPlayer.position.x, RelaxedPlayer.position.y - CastDistance), boxSize);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(new Vector2(TensionedPlayer.position.x, TensionedPlayer.position.y - CastDistance), boxSize);
+    }
+}

@@ -31,23 +31,20 @@ public class Jumping : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(canJump && IsGrounded())
+        if(canJump)
         {
             RelaxedPlayer.linearVelocityY = JumpForce;
             TensionedPlayer.linearVelocityY = JumpForce;
+            canJump = false;
         }
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if(context.performed && IsGrounded())
         {
             canJump = true;
-        }
-        else
-        {
-            canJump = false;
-        }    
+        }   
     }
 
     public bool IsGrounded()

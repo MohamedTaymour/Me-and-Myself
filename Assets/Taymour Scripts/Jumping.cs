@@ -8,7 +8,7 @@ public class Jumping : MonoBehaviour
     //required elements for jumping
 
     [Header("Jump Mechanics")]
-
+    
     [Tooltip("Determine both character's jump force")]
     public float JumpForce = 10f;
     private bool canJump;

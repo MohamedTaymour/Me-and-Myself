@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class Jumping : MonoBehaviour
 {
@@ -29,6 +31,16 @@ public class Jumping : MonoBehaviour
     [Tooltip("Allows the game to identify what is the ground")]
     [SerializeField] private LayerMask Ground;
 
+    [Tooltip("Determines the Audio Source of the assets")]
+    AudioSource JumpAudio;
+
+    [Tooltip("Determines the min max values of Pitch")]
+    [SerializeField] Vector2 AudioPitch = new(0.9f,1.1f);
+    public void Start()
+    {
+        JumpAudio = GetComponent<AudioSource>();
+    }
+
     void FixedUpdate()
     {
         if(canJump)
@@ -41,9 +53,12 @@ public class Jumping : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
+        float random = Random.Range(AudioPitch.x,AudioPitch.y);
         if(context.performed && IsGrounded())
         {
             canJump = true;
+            JumpAudio.pitch = random;
+            JumpAudio.Play();
         }   
     }
 

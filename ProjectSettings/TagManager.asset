@@ -14,10 +14,10 @@ TagManager:
   - Ground
   - Computer
   - Player
-  - 
-  - 
-  - 
-  - 
+  - Rope
+  - Obstacle
+  - Key
+  - Object
   - 
   - 
   - 

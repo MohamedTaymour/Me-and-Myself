@@ -29,7 +29,7 @@ public class OnComptuerInteract : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
-        if (canInteract)
+        if (canInteract && context.performed)
         {
             Debug.Log("Yes");
             StartCoroutine(InteractionCooldown());

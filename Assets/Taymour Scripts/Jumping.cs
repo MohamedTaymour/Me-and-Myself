@@ -11,7 +11,9 @@ public class Jumping : MonoBehaviour
     
     [Tooltip("Determine both character's jump force")]
     public float JumpForce = 10f;
-    private bool canJump;
+
+    private bool RelaxcanJump;
+    private bool TensioncanJump;
 
     [Tooltip("Relax character's Physics")]
     [SerializeField] private Rigidbody2D RelaxedPlayer;
@@ -31,43 +33,57 @@ public class Jumping : MonoBehaviour
     [Tooltip("Allows the game to identify what is the ground")]
     [SerializeField] private LayerMask Ground;
 
-    [Tooltip("Determines the Audio Source of the assets")]
-    AudioSource JumpAudio;
+    [Tooltip("Determines the Relax Player Audio Source of the assets")]
+    [SerializeField] private AudioSource RelaxJumpAudio;
+
+    [Tooltip("Determines the Tension Player Audio Source of the assets")]
+    [SerializeField] private AudioSource TensionJumpAudio;
 
     [Tooltip("Determines the min max values of Pitch")]
     [SerializeField] Vector2 AudioPitch = new(0.9f,1.1f);
-    public void Start()
-    {
-        JumpAudio = GetComponent<AudioSource>();
-    }
 
     void FixedUpdate()
     {
-        if(canJump)
+        if(RelaxcanJump)
         {
             RelaxedPlayer.linearVelocityY = JumpForce;
+            RelaxcanJump = false;
+        }
+
+        if (TensioncanJump)
+        {
             TensionedPlayer.linearVelocityY = JumpForce;
-            canJump = false;
+            TensioncanJump = false;
         }
     }
 
-    public void Jump(InputAction.CallbackContext context)
+    public void RelaxJump(InputAction.CallbackContext context)
     {
         float random = Random.Range(AudioPitch.x,AudioPitch.y);
-        if(context.performed && IsGrounded())
+        if(context.performed && IsGrounded(RelaxedPlayer))
         {
-            canJump = true;
-            JumpAudio.pitch = random;
-            JumpAudio.Play();
+            RelaxcanJump = true;
+            RelaxJumpAudio.pitch = random;
+            RelaxJumpAudio.Play();
         }   
     }
 
-    public bool IsGrounded()
+    public void TensionJump(InputAction.CallbackContext context)
     {
-        Vector2 relaxGround = new (RelaxedPlayer.position.x, RelaxedPlayer.position.y - CastDistance);
-        Vector2 tensionGround = new (TensionedPlayer.position.x, TensionedPlayer.position.y - CastDistance);
+        float random = Random.Range(AudioPitch.x, AudioPitch.y);
+        if (context.performed && IsGrounded(TensionedPlayer))
+        {
+            TensioncanJump = true;
+            TensionJumpAudio.pitch = random;
+            TensionJumpAudio.Play();
+        }
+    }
 
-        if (Physics2D.OverlapBox(relaxGround,boxSize,0,Ground) && Physics2D.OverlapBox(tensionGround, boxSize, 0, Ground))
+    public bool IsGrounded(Rigidbody2D rb)
+    {
+        Vector2 rbGround = new (rb.position.x, rb.position.y - CastDistance);
+
+        if (Physics2D.OverlapBox(rbGround,boxSize,0,Ground))
             return true;
         else
             return false;

@@ -12,8 +12,14 @@ public class Jumping : MonoBehaviour
     [Tooltip("Determine both character's jump force")]
     public float JumpForce = 10f;
 
-    private bool RelaxcanJump;
-    private bool TensioncanJump;
+    private bool relaxisJumping;
+    private bool tensionisJumping;
+
+    public bool RelaxisJumping 
+    {get { return relaxisJumping; } set { relaxisJumping = value;}}
+
+    public bool TensionisJumping
+    {get { return tensionisJumping; } set { tensionisJumping = value;}}
 
     [Tooltip("Relax character's Physics")]
     [SerializeField] private Rigidbody2D RelaxedPlayer;
@@ -33,49 +39,39 @@ public class Jumping : MonoBehaviour
     [Tooltip("Allows the game to identify what is the ground")]
     [SerializeField] private LayerMask Ground;
 
-    [Tooltip("Determines the Relax Player Audio Source of the assets")]
-    [SerializeField] private AudioSource RelaxJumpAudio;
-
-    [Tooltip("Determines the Tension Player Audio Source of the assets")]
-    [SerializeField] private AudioSource TensionJumpAudio;
-
-    [Tooltip("Determines the min max values of Pitch")]
-    [SerializeField] Vector2 AudioPitch = new(0.9f,1.1f);
+    [SerializeField] private AudioSource RelaxAudio;
+    [SerializeField] private AudioSource TensionAudio;
 
     void FixedUpdate()
     {
-        if(RelaxcanJump)
+        if(RelaxisJumping)
         {
             RelaxedPlayer.linearVelocityY = JumpForce;
-            RelaxcanJump = false;
+            RelaxisJumping = false;
         }
 
-        if (TensioncanJump)
+        if (TensionisJumping)
         {
             TensionedPlayer.linearVelocityY = JumpForce;
-            TensioncanJump = false;
+            TensionisJumping = false;
         }
     }
 
     public void RelaxJump(InputAction.CallbackContext context)
     {
-        float random = Random.Range(AudioPitch.x,AudioPitch.y);
         if(context.performed && IsGrounded(RelaxedPlayer))
         {
-            RelaxcanJump = true;
-            RelaxJumpAudio.pitch = random;
-            RelaxJumpAudio.Play();
-        }   
+            RelaxisJumping = true;
+            RelaxAudio.Play();
+        }
     }
 
     public void TensionJump(InputAction.CallbackContext context)
     {
-        float random = Random.Range(AudioPitch.x, AudioPitch.y);
         if (context.performed && IsGrounded(TensionedPlayer))
         {
-            TensioncanJump = true;
-            TensionJumpAudio.pitch = random;
-            TensionJumpAudio.Play();
+            TensionisJumping = true;
+            TensionAudio.Play();
         }
     }
 

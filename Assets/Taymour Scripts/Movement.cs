@@ -6,20 +6,13 @@ public class Movement : MonoBehaviour
     [Header("Movement Properties")]
     public float MovementSpeed = 10f;
 
-    private float movementDirection;
-    public float MovementDirection
-    {
-        set
-        {
-            movementDirection = value;
-        }
-        get
-        {
-            return movementDirection;
-        }
-    }
+    private float RelaxMovementDirection;
 
-    private float FaceDirection = 1;
+    private float TensionMovementDirection;
+
+    private float RelaxFaceDirection = 1;
+
+    private float TensionFaceDirection = 1;
 
     [Header("The Physics properties for the bodies")]
 
@@ -50,46 +43,75 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        RelaxedPlayer.linearVelocityX = MovementDirection * MovementSpeed;
+        RelaxedPlayer.linearVelocityX = RelaxMovementDirection * MovementSpeed;
 
-        TensionedPlayer.linearVelocityX = MovementDirection * MovementSpeed;
+        TensionedPlayer.linearVelocityX = TensionMovementDirection * MovementSpeed;
     }
 
-    private void Flip()
+    private void FlipRelaxed()
     {
-        FaceDirection *= -1;
+        RelaxFaceDirection *= -1;
         Vector2 Relaxscale = RelaxTransform.localScale;
-        Vector2 Tensionscale = TensionTransform.localScale;
-
         Relaxscale.x *= -1;
-        Tensionscale.x *= -1;
-
         RelaxTransform.localScale = Relaxscale;
+
+    }
+
+    private void FlipTensioned()
+    {
+        TensionFaceDirection *= -1;
+        Vector2 Tensionscale = TensionTransform.localScale;
+        Tensionscale.x *= -1;
         TensionTransform.localScale = Tensionscale;
     }
 
-    public void Move(InputAction.CallbackContext context)
+    public void MoveRelax(InputAction.CallbackContext context)
     {
         float movementX = context.ReadValue<Vector2>().x;
 
         if (movementX < 0)
         {
-            if (FaceDirection > 0)
-                Flip();
+            if (RelaxFaceDirection > 0)
+                FlipRelaxed();
 
-            MovementDirection = -1;
+            RelaxMovementDirection = -1;
         }
 
         else if (movementX > 0)
         {
-            if(FaceDirection < 0)
-                Flip();
+            if (RelaxFaceDirection < 0)
+                FlipRelaxed();
 
-            MovementDirection = 1;
+            RelaxMovementDirection = 1;
         }
         else
         {
-            MovementDirection = 0;
+            RelaxMovementDirection = 0;
+        }
+    }
+
+    public void MoveTension(InputAction.CallbackContext context)
+    {
+        float movementX = context.ReadValue<Vector2>().x;
+
+        if (movementX < 0)
+        {
+            if (TensionFaceDirection > 0)
+                FlipTensioned();
+
+            TensionMovementDirection = -1;
+        }
+
+        else if (movementX > 0)
+        {
+            if (TensionFaceDirection < 0)
+                FlipTensioned();
+
+            TensionMovementDirection = 1;
+        }
+        else
+        {
+            TensionMovementDirection = 0;
         }
     }
 }

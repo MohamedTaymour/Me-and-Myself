@@ -40,15 +40,7 @@ public class Movement : MonoBehaviour
     [Tooltip("Tension character's movement audio")]
     [SerializeField] private AudioSource TensionMovementAudio;
 
-    private bool relaxisMoving;
-    private bool tensionisMoving;
-
     private Jumping jumping;
-
-    public bool RelaxisMoving 
-    { set { relaxisMoving = value; } get { return relaxisMoving; } }
-    public bool TensionisMoving
-    { set {tensionisMoving = value; } get {return tensionisMoving;} }
 
     private void Start()
     {
@@ -96,7 +88,6 @@ public class Movement : MonoBehaviour
                 FlipRelaxed();
 
             RelaxMovementDirection = -1;
-            RelaxisMoving = true;
 
             if (jumping.IsGrounded(RelaxedPlayer))
             {
@@ -111,7 +102,6 @@ public class Movement : MonoBehaviour
                 FlipRelaxed();
 
             RelaxMovementDirection = 1;
-            RelaxisMoving = true;
 
             if (jumping.IsGrounded(RelaxedPlayer))
             {
@@ -122,7 +112,6 @@ public class Movement : MonoBehaviour
         else
         {
             RelaxMovementDirection = 0;
-            RelaxisMoving = false;
 
             RelaxMovementAudio.Stop();
             RelaxMovementAudio.loop = false;
@@ -139,7 +128,6 @@ public class Movement : MonoBehaviour
                 FlipTensioned();
 
             TensionMovementDirection = -1;
-            TensionisMoving = true;
 
             if (jumping.IsGrounded(TensionedPlayer))
             {
@@ -154,7 +142,6 @@ public class Movement : MonoBehaviour
                 FlipTensioned();
 
             TensionMovementDirection = 1;
-            TensionisMoving = true;
 
             if (jumping.IsGrounded(TensionedPlayer))
             {
@@ -165,7 +152,6 @@ public class Movement : MonoBehaviour
         else
         {
             TensionMovementDirection = 0;
-            TensionisMoving = false;
 
             TensionMovementAudio.Stop();
             TensionMovementAudio.loop = false;

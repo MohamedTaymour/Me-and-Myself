@@ -12,14 +12,8 @@ public class Jumping : MonoBehaviour
     [Tooltip("Determine both character's jump force")]
     public float JumpForce = 10f;
 
-    private bool relaxisJumping;
-    private bool tensionisJumping;
-
-    public bool RelaxisJumping 
-    {get { return relaxisJumping; } set { relaxisJumping = value;}}
-
-    public bool TensionisJumping
-    {get { return tensionisJumping; } set { tensionisJumping = value;}}
+    private bool RelaxisJumping;
+    private bool TensionisJumping;
 
     [Tooltip("Relax character's Physics")]
     [SerializeField] private Rigidbody2D RelaxedPlayer;

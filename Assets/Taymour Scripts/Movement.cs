@@ -33,11 +33,12 @@ public class Movement : MonoBehaviour
     [Tooltip("Tension character's transformation")]
     [SerializeField] private Transform TensionTransform;
 
-    [Tooltip("Relax character movement audio")]
-    [SerializeField] private AudioSource RelaxAudio;
+    [Header("Audio Options")]
+    [Tooltip("Relax character's movement audio")]
+    [SerializeField] private AudioSource RelaxMovementAudio;
 
-    [Tooltip("Relax character movement audio")]
-    [SerializeField] private AudioSource TensionAudio;
+    [Tooltip("Tension character's movement audio")]
+    [SerializeField] private AudioSource TensionMovementAudio;
 
     private bool relaxisMoving;
     private bool tensionisMoving;
@@ -99,8 +100,8 @@ public class Movement : MonoBehaviour
 
             if (jumping.IsGrounded(RelaxedPlayer))
             {
-                RelaxAudio.Play();
-                RelaxAudio.loop = true;
+                RelaxMovementAudio.Play();
+                RelaxMovementAudio.loop = true;
             }
         }
 
@@ -114,8 +115,8 @@ public class Movement : MonoBehaviour
 
             if (jumping.IsGrounded(RelaxedPlayer))
             {
-                RelaxAudio.Play();
-                RelaxAudio.loop = true;
+                RelaxMovementAudio.Play();
+                RelaxMovementAudio.loop = true;
             }
         }
         else
@@ -123,8 +124,8 @@ public class Movement : MonoBehaviour
             RelaxMovementDirection = 0;
             RelaxisMoving = false;
 
-            RelaxAudio.Stop();
-            RelaxAudio.loop = false;
+            RelaxMovementAudio.Stop();
+            RelaxMovementAudio.loop = false;
         }
     }
 
@@ -142,8 +143,8 @@ public class Movement : MonoBehaviour
 
             if (jumping.IsGrounded(TensionedPlayer))
             {
-                TensionAudio.Play();
-                TensionAudio.loop = true;
+                TensionMovementAudio.Play();
+                TensionMovementAudio.loop = true;
             }
         }
 
@@ -157,8 +158,8 @@ public class Movement : MonoBehaviour
 
             if (jumping.IsGrounded(TensionedPlayer))
             {
-                TensionAudio.Play();
-                TensionAudio.loop = true;
+                TensionMovementAudio.Play();
+                TensionMovementAudio.loop = true;
             }
         }
         else
@@ -166,8 +167,8 @@ public class Movement : MonoBehaviour
             TensionMovementDirection = 0;
             TensionisMoving = false;
 
-            TensionAudio.Stop();
-            TensionAudio.loop = false;
+            TensionMovementAudio.Stop();
+            TensionMovementAudio.loop = false;
         }
     }
 }

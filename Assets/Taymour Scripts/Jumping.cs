@@ -12,14 +12,8 @@ public class Jumping : MonoBehaviour
     [Tooltip("Determine both character's jump force")]
     public float JumpForce = 10f;
 
-    private bool relaxisJumping;
-    private bool tensionisJumping;
-
-    public bool RelaxisJumping 
-    {get { return relaxisJumping; } set { relaxisJumping = value;}}
-
-    public bool TensionisJumping
-    {get { return tensionisJumping; } set { tensionisJumping = value;}}
+    private bool RelaxisJumping;
+    private bool TensionisJumping;
 
     [Tooltip("Relax character's Physics")]
     [SerializeField] private Rigidbody2D RelaxedPlayer;
@@ -39,8 +33,12 @@ public class Jumping : MonoBehaviour
     [Tooltip("Allows the game to identify what is the ground")]
     [SerializeField] private LayerMask Ground;
 
-    [SerializeField] private AudioSource RelaxAudio;
-    [SerializeField] private AudioSource TensionAudio;
+    [Header("Audio Options")]
+    [Tooltip("Relax character's jumping audio")]
+    [SerializeField] private AudioSource RelaxJumpingAudio;
+
+    [Tooltip("Relax character's jumping audio")]
+    [SerializeField] private AudioSource TensionJumpingAudio;
 
     void FixedUpdate()
     {
@@ -62,7 +60,7 @@ public class Jumping : MonoBehaviour
         if(context.performed && IsGrounded(RelaxedPlayer))
         {
             RelaxisJumping = true;
-            RelaxAudio.Play();
+            RelaxJumpingAudio.Play();
         }
     }
 
@@ -71,7 +69,7 @@ public class Jumping : MonoBehaviour
         if (context.performed && IsGrounded(TensionedPlayer))
         {
             TensionisJumping = true;
-            TensionAudio.Play();
+            TensionJumpingAudio.Play();
         }
     }
 

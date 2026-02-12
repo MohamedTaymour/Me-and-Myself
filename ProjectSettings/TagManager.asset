@@ -13,12 +13,12 @@ TagManager:
   - UI
   - Ground
   - Computer
-  - Player
+  - RelaxPlayer
+  - TensionPlayer
   - Rope
   - Obstacle
   - Key
   - Object
-  - 
   - 
   - 
   - 

@@ -6,25 +6,32 @@ using UnityEngine.InputSystem;
 public class OnComptuerInteract : MonoBehaviour
 {
     private bool canInteract = false;
+    private readonly int ComputerMask = 7;
 
-    private int PlayerMask = 8;
+    private readonly int RelaxMask = 8;
+    private readonly int TensionMask = 9;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == PlayerMask)
+        if (collision.gameObject.layer == ComputerMask)
         {
-            Debug.Log("enter");
+            if (gameObject.layer == RelaxMask)
+                Debug.Log("Relax enter");
+            else if (gameObject.layer == TensionMask)
+                Debug.Log("Tension enter");
+                
             canInteract = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == PlayerMask)
-        {
-            Debug.Log("exit");
-            canInteract = false;
-        }
+        if (gameObject.layer == RelaxMask)
+            Debug.Log("Relax exit");
+        else if (gameObject.layer == TensionMask)
+            Debug.Log("Tension exit");
+
+        canInteract = false;
     }
 
     public void Interact(InputAction.CallbackContext context)
@@ -38,14 +45,12 @@ public class OnComptuerInteract : MonoBehaviour
 
     private IEnumerator InteractionCooldown()
     {
-        canInteract = false;
-        yield return new WaitForSeconds(1.5f);
-        canInteract = true;
+        if (canInteract)
+        {
+            canInteract = false;
+            yield return new WaitForSeconds(1.5f);
+            canInteract = true;
+        }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position, new Vector2(1, 1));
-    }
 }

@@ -7,15 +7,6 @@
             "id": "df70fa95-8a34-4494-b137-73ab6b9c7d37",
             "actions": [
                 {
-                    "name": "RelaxMove",
-                    "type": "Value",
-                    "id": "0411960e-519f-45b0-ad68-57e6c4c91170",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "TensionMove",
                     "type": "Value",
                     "id": "d1703f70-8f2c-473d-95e4-45eb5c2c53cf",
@@ -25,18 +16,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "RelaxJump",
+                    "name": "TensionJump",
                     "type": "Button",
-                    "id": "0965fe42-8954-49f1-9bf7-11ce4a7dd6ea",
+                    "id": "471e5f79-b857-4716-a2fc-a3ebf4fc81e0",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "TensionJump",
+                    "name": "RelaxMove",
+                    "type": "Value",
+                    "id": "0411960e-519f-45b0-ad68-57e6c4c91170",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RelaxJump",
                     "type": "Button",
-                    "id": "471e5f79-b857-4716-a2fc-a3ebf4fc81e0",
+                    "id": "0965fe42-8954-49f1-9bf7-11ce4a7dd6ea",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -68,11 +68,29 @@
                     "processors": "",
                     "interactions": "Tap",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Rope Canon",
+                    "type": "Button",
+                    "id": "a2566848-8b93-46e2-8907-0a8517f23570",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Rope Pendlum",
+                    "type": "Button",
+                    "id": "5fc4a82f-b6d5-4fb3-b70a-921e8dbf794f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
-                    "name": "WASD",
+                    "name": "JL",
                     "id": "dc6d438c-7a59-47fe-aec9-ef6e576a9147",
                     "path": "2DVector",
                     "interactions": "",
@@ -83,20 +101,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "down",
-                    "id": "d512be6c-55e0-414a-b091-0c05fb155da8",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RelaxMove",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "left",
                     "id": "49bc65ca-97ca-45f2-906a-3081c2189bc6",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -107,7 +114,7 @@
                 {
                     "name": "right",
                     "id": "d5f94732-d3a0-4066-b551-726d1e09bbe3",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -116,7 +123,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Left Stick",
+                    "name": "Right Stick",
                     "id": "ae004dad-7f2b-42ef-bb87-d05fff3f9e48",
                     "path": "2DVector",
                     "interactions": "",
@@ -127,31 +134,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "ee3ccafe-32fd-4d49-b959-1660b5547b18",
-                    "path": "<Gamepad>/leftStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RelaxMove",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "cb7549e0-76e1-44e0-ba97-eabdb5a82688",
-                    "path": "<Gamepad>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RelaxMove",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "left",
                     "id": "f3f8fa78-e50a-46d4-8113-381ca83b1544",
-                    "path": "<Gamepad>/leftStick/left",
+                    "path": "<Gamepad>/rightStick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -162,7 +147,7 @@
                 {
                     "name": "right",
                     "id": "8af83660-f2cc-41b3-9066-61ad373dd81f",
-                    "path": "<Gamepad>/leftStick/right",
+                    "path": "<Gamepad>/rightStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -173,7 +158,7 @@
                 {
                     "name": "",
                     "id": "4c06f63a-8d92-4a7b-b432-52f61ddcf0f6",
-                    "path": "<Keyboard>/w",
+                    "path": "<Keyboard>/i",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -184,7 +169,7 @@
                 {
                     "name": "",
                     "id": "d21b75ec-2adc-4087-897f-015c8c0600ba",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -195,7 +180,7 @@
                 {
                     "name": "",
                     "id": "fbe97d46-81cd-4e42-8a94-fe2c2fb99ca7",
-                    "path": "<Keyboard>/i",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -206,7 +191,7 @@
                 {
                     "name": "",
                     "id": "32113111-f0f9-499b-86a8-ba9de3dac704",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -259,7 +244,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "IJKL",
+                    "name": "AD",
                     "id": "fff916dd-611d-4119-9463-764e683a5f1a",
                     "path": "2DVector",
                     "interactions": "",
@@ -270,20 +255,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "down",
-                    "id": "6e88bf35-5df0-4db1-87a6-0165e53122ea",
-                    "path": "<Keyboard>/k",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "TensionMove",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "left",
                     "id": "2ac60bdc-404d-4d61-bc23-872cbcfe779e",
-                    "path": "<Keyboard>/j",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -294,7 +268,7 @@
                 {
                     "name": "right",
                     "id": "f77744ae-b6fe-4744-a0ff-a5569ca054bd",
-                    "path": "<Keyboard>/l",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -303,7 +277,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Right Stick",
+                    "name": "Left Stick",
                     "id": "0a05f198-a62c-4ba7-9c10-a0ba5cbafab8",
                     "path": "2DVector",
                     "interactions": "",
@@ -314,31 +288,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "33540053-f53c-4720-ba27-d1b2d9456da3",
-                    "path": "<Gamepad>/rightStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "TensionMove",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "424aba2f-9b71-4bd7-81a2-aa617613b9e0",
-                    "path": "<Gamepad>/rightStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "TensionMove",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "left",
                     "id": "13ef2396-214e-4765-9e65-f5e4651fc2b5",
-                    "path": "<Gamepad>/rightStick/left",
+                    "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -349,7 +301,7 @@
                 {
                     "name": "right",
                     "id": "c91c92a7-76c2-4f1b-b958-2be02514c875",
-                    "path": "<Gamepad>/rightStick/right",
+                    "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -376,6 +328,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5791b93e-ee35-4194-9ba8-414acf119b3b",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rope Canon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d5ba33a-56d2-48a9-9ac9-77da83dd0eea",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rope Pendlum",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -43,18 +43,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RelaxInteract",
+                    "name": "TensionInteract",
                     "type": "Button",
-                    "id": "e6efd4ef-8b3e-4402-9744-48469139bda9",
+                    "id": "cc06050d-e26f-46e5-92d6-790a7cee2669",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "TensionInteract",
+                    "name": "RelaxInteract",
                     "type": "Button",
-                    "id": "cc06050d-e26f-46e5-92d6-790a7cee2669",
+                    "id": "e6efd4ef-8b3e-4402-9744-48469139bda9",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -202,7 +202,7 @@
                 {
                     "name": "",
                     "id": "ba0efb57-10a3-4091-a2b8-4123bd778149",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/u",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -213,7 +213,7 @@
                 {
                     "name": "",
                     "id": "555d5199-105d-4d89-a748-54053e7b77f4",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -224,7 +224,7 @@
                 {
                     "name": "",
                     "id": "0bb90a0d-c27d-4d31-8436-23fdd594d556",
-                    "path": "<Keyboard>/u",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -235,7 +235,7 @@
                 {
                     "name": "",
                     "id": "318d2b11-e360-4eb3-bbb7-6920d1056975",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",

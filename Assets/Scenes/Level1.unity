@@ -630,6 +630,7 @@ GameObject:
   - component: {fileID: 589537056}
   - component: {fileID: 589537055}
   - component: {fileID: 589537058}
+  - component: {fileID: 589537059}
   m_Layer: 15
   m_Name: Lever
   m_TagString: Untagged
@@ -757,6 +758,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.27, y: 0.45}
   m_EdgeRadius: 0
+--- !u!114 &589537059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589537054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e65966ca07e4c9c45974eb2e493711cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LeverObject
+  isOn: 0
+  spriteUp: {fileID: 5564861588143961109, guid: c06feebb382dd4a4483490da012d37af, type: 3}
+  spriteDown: {fileID: -7229799663987658095, guid: c06feebb382dd4a4483490da012d37af, type: 3}
 --- !u!114 &598064234 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7503162402566420061, guid: ed5543aced34218459bfcd82c5774a02, type: 3}
@@ -966,7 +982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoulLink
   tension: {fileID: 1113917832}
   relax: {fileID: 97980872}
-  maxLength: 18
+  maxLength: 25
 --- !u!4 &1047870175
 Transform:
   m_ObjectHideFlags: 0
@@ -3171,6 +3187,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2424467207548979325, guid: cc218c2df197467488fd2385296d40f7, type: 3}
+      propertyPath: lever
+      value: 
+      objectReference: {fileID: 589537059}
     - target: {fileID: 3452877966096372112, guid: cc218c2df197467488fd2385296d40f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -159.88
@@ -3349,6 +3369,18 @@ PrefabInstance:
     - target: {fileID: 375131613761889655, guid: ed5543aced34218459bfcd82c5774a02, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3378888947162019492, guid: ed5543aced34218459bfcd82c5774a02, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735092643058394665, guid: ed5543aced34218459bfcd82c5774a02, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032391005705517651, guid: ed5543aced34218459bfcd82c5774a02, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7313171063151877722, guid: ed5543aced34218459bfcd82c5774a02, type: 3}
       propertyPath: m_Pivot.x

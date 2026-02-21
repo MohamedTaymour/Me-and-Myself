@@ -40,11 +40,13 @@ public class Movement : MonoBehaviour
     [Tooltip("Tension character's movement audio")]
     [SerializeField] private AudioSource TensionMovementAudio;
 
+    private AudioManager audioManager;
     private Jumping jumping;
 
     private void Start()
     {
-        jumping = GetComponent<Jumping>();        
+        jumping = GetComponent<Jumping>();
+        audioManager = FindFirstObjectByType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -91,8 +93,7 @@ public class Movement : MonoBehaviour
 
             if (jumping.IsGrounded(RelaxedPlayer))
             {
-                RelaxMovementAudio.Play();
-                RelaxMovementAudio.loop = true;
+                audioManager.PlayLoop("R_walk");
             }
         }
 
@@ -105,16 +106,14 @@ public class Movement : MonoBehaviour
 
             if (jumping.IsGrounded(RelaxedPlayer))
             {
-                RelaxMovementAudio.Play();
-                RelaxMovementAudio.loop = true;
+                audioManager.PlayLoop("R_walk");
             }
         }
         else
         {
             RelaxMovementDirection = 0;
 
-            RelaxMovementAudio.Stop();
-            RelaxMovementAudio.loop = false;
+            audioManager.Stop("R_walk");
         }
     }
 
@@ -131,8 +130,7 @@ public class Movement : MonoBehaviour
 
             if (jumping.IsGrounded(TensionedPlayer))
             {
-                TensionMovementAudio.Play();
-                TensionMovementAudio.loop = true;
+                audioManager.PlayLoop("T_walk");
             }
         }
 
@@ -145,16 +143,14 @@ public class Movement : MonoBehaviour
 
             if (jumping.IsGrounded(TensionedPlayer))
             {
-                TensionMovementAudio.Play();
-                TensionMovementAudio.loop = true;
+                audioManager.PlayLoop("T_walk");
             }
         }
         else
         {
             TensionMovementDirection = 0;
 
-            TensionMovementAudio.Stop();
-            TensionMovementAudio.loop = false;
+            audioManager.Stop("T_walk");
         }
     }
 }

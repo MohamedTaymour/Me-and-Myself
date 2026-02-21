@@ -60,7 +60,7 @@ public class Jumping : MonoBehaviour
         if(context.performed && IsGrounded(RelaxedPlayer))
         {
             RelaxisJumping = true;
-            RelaxJumpingAudio.Play();
+            FindFirstObjectByType<AudioManager>().Play("R_jump");
         }
     }
 
@@ -69,7 +69,7 @@ public class Jumping : MonoBehaviour
         if (context.performed && IsGrounded(TensionedPlayer))
         {
             TensionisJumping = true;
-            TensionJumpingAudio.Play();
+            FindFirstObjectByType<AudioManager>().Play("T_jump");
         }
     }
 

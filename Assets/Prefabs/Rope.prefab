@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5451641289806865837}
   - component: {fileID: 3408975915031288895}
   - component: {fileID: 8401715685571762133}
+  - component: {fileID: 2130715438109513042}
+  - component: {fileID: 4498644503693484987}
   m_Layer: 0
   m_Name: Rope
   m_TagString: Untagged
@@ -65,3 +67,35 @@ MonoBehaviour:
   shakeIntensity: 0.22
   Relax: {fileID: 0}
   Tension: {fileID: 0}
+--- !u!114 &2130715438109513042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347170584928736840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65990c4831d5edd4aabe4470de5082af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RopeSwing
+  ropeConstraint: {fileID: 3408975915031288895}
+  jumping: {fileID: 0}
+  pullStrength: 20
+  pullArrivalThreshold: 1
+  ropeAdjustSpeed: 2
+  minRopeLength: 4
+  powerupActive: 0
+  pendulumPhase: 0
+--- !u!114 &4498644503693484987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347170584928736840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661ba6759d9af4c449eea623d9d4ad09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RopeCanon

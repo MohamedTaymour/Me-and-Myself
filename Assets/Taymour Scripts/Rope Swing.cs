@@ -6,31 +6,53 @@ public class RopeSwing : MonoBehaviour
 {
     [Header("References")]
     public RopeConstraint ropeConstraint;
+    public Jumping jumping;
 
     [Header("Pull Settings")]
-    public float pullStrength = 150f;       // raised significantly from 20f
+    public float pullStrength = 150f;
     public float pullArrivalThreshold = 1f;
 
     [Header("Rope Length Control")]
     public float ropeAdjustSpeed = 2f;
     public float minRopeLength = 1.5f;
 
-    private bool powerupActive = false;
-    private bool pendulumPhase = false;
+    public bool powerupActive = false;
+    public bool pendulumPhase = false;
     private Vector2 frozenPosition;
     private RigidbodyType2D originalBodyType;
     private float originalGravity;
-    private float defaultMaxLength;         // stores default max length on start
+    private float defaultMaxLength;
+
+    // store held state of shorten and lengthen
+    private bool isShorteningRope = false;
+    private bool isLengtheningRope = false;
 
     void Start()
     {
-        // capture the default max length before any powerup changes it
         defaultMaxLength = ropeConstraint.maxLength;
+    }
+
+    void Update()
+    {
+        if (!pendulumPhase) return;
+
+        // apply rope length change every frame while button is held
+        if (isShorteningRope)
+        {
+            ropeConstraint.maxLength = Mathf.Max(minRopeLength,
+                ropeConstraint.maxLength - ropeAdjustSpeed * Time.deltaTime);
+        }
+
+        if (isLengtheningRope)
+        {
+            ropeConstraint.maxLength += ropeAdjustSpeed * Time.deltaTime;
+        }
     }
 
     public void OnActivate(InputAction.CallbackContext context)
     {
         if (!context.started) return;
+        if (!jumping.IsGrounded(ropeConstraint.tension)) return;
 
         if (!powerupActive)
             Activate();
@@ -41,26 +63,30 @@ public class RopeSwing : MonoBehaviour
     public void OnShorten(InputAction.CallbackContext context)
     {
         if (!pendulumPhase) return;
-        if (context.performed)
-        {
-            ropeConstraint.maxLength = Mathf.Max(minRopeLength,
-                ropeConstraint.maxLength - ropeAdjustSpeed * Time.deltaTime);
-        }
+
+        // started means button pressed down, canceled means button released
+        if (context.started)
+            isShorteningRope = true;
+        else if (context.canceled)
+            isShorteningRope = false;
     }
 
     public void OnLengthen(InputAction.CallbackContext context)
     {
         if (!pendulumPhase) return;
-        if (context.performed)
-        {
-            ropeConstraint.maxLength += ropeAdjustSpeed * Time.deltaTime;
-        }
+
+        if (context.started)
+            isLengtheningRope = true;
+        else if (context.canceled)
+            isLengtheningRope = false;
     }
 
     void Activate()
     {
         powerupActive = true;
         pendulumPhase = false;
+        isShorteningRope = false;
+        isLengtheningRope = false;
 
         originalBodyType = ropeConstraint.tension.bodyType;
         originalGravity = ropeConstraint.tension.gravityScale;
@@ -77,19 +103,18 @@ public class RopeSwing : MonoBehaviour
         StopAllCoroutines();
         powerupActive = false;
         pendulumPhase = false;
+        isShorteningRope = false;
+        isLengtheningRope = false;
 
-        // restore tension
         ropeConstraint.tension.bodyType = originalBodyType;
         ropeConstraint.tension.gravityScale = originalGravity;
         ropeConstraint.tension.position = frozenPosition;
 
-        // snap rope back to default max length instantly
         ropeConstraint.maxLength = defaultMaxLength;
     }
 
     IEnumerator PullAndSwingRoutine()
     {
-        // phase 1 — pull relax toward tension
         while (true)
         {
             ropeConstraint.tension.position = frozenPosition;
@@ -100,11 +125,7 @@ public class RopeSwing : MonoBehaviour
             float distanceToTension = Vector2.Distance(ropeConstraint.relax.position,
                                                        ropeConstraint.tension.position);
 
-            // strong pull that scales with distance
-            // multiply by both pullStrength and distanceToTension squared
-            // squaring the distance makes the pull dramatically stronger the further away relax is
             ropeConstraint.relax.AddForce(directionToTension * (pullStrength * (distanceToTension * distanceToTension)));
-
             ropeConstraint.maxLength = distanceToTension;
 
             if (distanceToTension <= pullArrivalThreshold)
@@ -113,7 +134,6 @@ public class RopeSwing : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        // phase 2 — pendulum
         pendulumPhase = true;
         ropeConstraint.relax.AddForce(new Vector2(3f, 0f), ForceMode2D.Impulse);
 

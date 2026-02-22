@@ -514,29 +514,6 @@ MonoBehaviour:
   bounceMultiplier: 1.4
   maxHeight: 0
   jumping: {fileID: 2139177223}
---- !u!1 &109197505 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6318325858554040524, guid: cc218c2df197467488fd2385296d40f7, type: 3}
-  m_PrefabInstance: {fileID: 809379798558372147}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &109197506 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5714495681074974655, guid: cc218c2df197467488fd2385296d40f7, type: 3}
-  m_PrefabInstance: {fileID: 809379798558372147}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &109197509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 109197505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9a6aefaa07e4df42b4cab14c83adf9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SharePlatformSpeed
-  parent: {fileID: 0}
 --- !u!1 &532003843
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,30 +966,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1047870173 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7347170584928736840, guid: 209d393337e5940489e769703e0af6d3, type: 3}
+--- !u!114 &1047870178 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2130715438109513042, guid: 209d393337e5940489e769703e0af6d3, type: 3}
   m_PrefabInstance: {fileID: 4831055465683423924}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1047870177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047870173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 661ba6759d9af4c449eea623d9d4ad09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RopeCanon
---- !u!114 &1047870178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047870173}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65990c4831d5edd4aabe4470de5082af, type: 3}
@@ -1128,7 +1087,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 1
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -2520,6 +2479,7 @@ MonoBehaviour:
   Ground:
     serializedVersion: 2
     m_Bits: 10304
+  rope: {fileID: 1047870178}
 --- !u!114 &2139177224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2744,9 +2704,53 @@ MonoBehaviour:
     m_ActionId: a2566848-8b93-46e2-8907-0a8517f23570
     m_ActionName: Player/Rope Canon
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1047870178}
+        m_TargetAssemblyTypeName: RopeSwing, Assembly-CSharp
+        m_MethodName: OnActivate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 5fc4a82f-b6d5-4fb3-b70a-921e8dbf794f
     m_ActionName: Player/Rope Pendlum
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1047870178}
+        m_TargetAssemblyTypeName: RopeSwing, Assembly-CSharp
+        m_MethodName: OnLengthen
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b542faaa-4f8e-477c-848b-b94f5268703b
+    m_ActionName: 'Player/Rope Lengthen[/Keyboard/w]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1047870178}
+        m_TargetAssemblyTypeName: RopeSwing, Assembly-CSharp
+        m_MethodName: OnShorten
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1b8c713e-cdc3-442b-8586-7873234e2e34
+    m_ActionName: 'Player/Rope Shorten[/Keyboard/s]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -2856,22 +2860,6 @@ PrefabInstance:
       propertyPath: lever
       value: 
       objectReference: {fileID: 1812296908}
-    - target: {fileID: 2424467207548979325, guid: cc218c2df197467488fd2385296d40f7, type: 3}
-      propertyPath: speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2424467207548979325, guid: cc218c2df197467488fd2385296d40f7, type: 3}
-      propertyPath: button
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2424467207548979325, guid: cc218c2df197467488fd2385296d40f7, type: 3}
-      propertyPath: Platform
-      value: 
-      objectReference: {fileID: 109197506}
-    - target: {fileID: 2526094964370892966, guid: cc218c2df197467488fd2385296d40f7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3452877966096372112, guid: cc218c2df197467488fd2385296d40f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -157.91
@@ -2916,25 +2904,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Moving Platform
       objectReference: {fileID: 0}
-    - target: {fileID: 5401770270503231584, guid: cc218c2df197467488fd2385296d40f7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6212953859358843473, guid: cc218c2df197467488fd2385296d40f7, type: 3}
-      propertyPath: m_Size.y
-      value: 0.119462736
-      objectReference: {fileID: 0}
-    - target: {fileID: 6212953859358843473, guid: cc218c2df197467488fd2385296d40f7, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.029964563
-      objectReference: {fileID: 0}
+    - target: {fileID: 6129778915864528012, guid: cc218c2df197467488fd2385296d40f7, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 2139177226}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6318325858554040524, guid: cc218c2df197467488fd2385296d40f7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 109197509}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc218c2df197467488fd2385296d40f7, type: 3}
 --- !u!1001 &4309622473206456262
 PrefabInstance:
@@ -3062,6 +3039,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2130715438109513042, guid: 209d393337e5940489e769703e0af6d3, type: 3}
+      propertyPath: jumping
+      value: 
+      objectReference: {fileID: 2139177223}
+    - target: {fileID: 2130715438109513042, guid: 209d393337e5940489e769703e0af6d3, type: 3}
+      propertyPath: pullArrivalThreshold
+      value: 0.001
+      objectReference: {fileID: 0}
     - target: {fileID: 3408975915031288895, guid: 209d393337e5940489e769703e0af6d3, type: 3}
       propertyPath: relax
       value: 
@@ -3125,13 +3110,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7347170584928736840, guid: 209d393337e5940489e769703e0af6d3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1047870178}
-    - targetCorrespondingSourceObject: {fileID: 7347170584928736840, guid: 209d393337e5940489e769703e0af6d3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1047870177}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 209d393337e5940489e769703e0af6d3, type: 3}
 --- !u!1001 &5444104705981799187
 PrefabInstance:
@@ -3198,24 +3177,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1346fe53cd7ebda4eb1efaf35595c99e, type: 3}
---- !u!1 &6318325857226315695 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 574971065960853425, guid: b56782beb4301af4bb66e925e7af97ce, type: 3}
-  m_PrefabInstance: {fileID: 8220042757918948928}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6318325857226315696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6318325857226315695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9a6aefaa07e4df42b4cab14c83adf9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SharePlatformSpeed
-  parent: {fileID: 0}
 --- !u!1001 &7945370999337166189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3337,10 +3298,10 @@ PrefabInstance:
       propertyPath: lever
       value: 
       objectReference: {fileID: 589537059}
-    - target: {fileID: 2182000912956635197, guid: b56782beb4301af4bb66e925e7af97ce, type: 3}
-      propertyPath: speed
-      value: 3
-      objectReference: {fileID: 0}
+    - target: {fileID: 3648717436244351595, guid: b56782beb4301af4bb66e925e7af97ce, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 2139177226}
     - target: {fileID: 4591958905877411330, guid: b56782beb4301af4bb66e925e7af97ce, type: 3}
       propertyPath: m_LocalPosition.x
       value: -148.28
@@ -3388,10 +3349,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 574971065960853425, guid: b56782beb4301af4bb66e925e7af97ce, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6318325857226315696}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b56782beb4301af4bb66e925e7af97ce, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

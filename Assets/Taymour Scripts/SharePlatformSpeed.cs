@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SharePlatformSpeed : MonoBehaviour
@@ -15,7 +16,7 @@ public class SharePlatformSpeed : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.transform.SetParent(Platform);
+            StartCoroutine(SetParentNextFrame(other.transform, Platform));
         }
     }
 
@@ -23,7 +24,14 @@ public class SharePlatformSpeed : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.transform.SetParent(parent);
+            StartCoroutine(SetParentNextFrame(other.transform, parent));
         }
+    }
+
+    private IEnumerator SetParentNextFrame(Transform child, Transform newParent)
+    {
+        yield return null;
+        if (child != null)
+            child.SetParent(newParent);
     }
 }

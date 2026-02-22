@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3242652960813178113}
   - component: {fileID: 5846415499288873625}
   - component: {fileID: 7557770323214474072}
+  - component: {fileID: 3648717436244351595}
   m_Layer: 6
   m_Name: Platform
   m_TagString: Untagged
@@ -95,6 +96,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.1100769, y: 0.119462736}
   m_EdgeRadius: 0
+--- !u!114 &3648717436244351595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574971065960853425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9a6aefaa07e4df42b4cab14c83adf9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SharePlatformSpeed
+  parent: {fileID: 0}
 --- !u!1 &1600174502692156213
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +379,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5043296028013992965}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0.0014235944, w: 0.999999}
+  m_LocalRotation: {x: 0, y: 0, z: -0.0014223772, w: 0.999999}
   m_LocalPosition: {x: -148.28, y: -3.24, z: 0.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -391,7 +405,7 @@ MonoBehaviour:
   Top: {fileID: 296156660414318284}
   Bottom: {fileID: 5184749552500009707}
   Platform: {fileID: 3242652960813178113}
-  speed: 2
+  speed: 3
 --- !u!114 &8412971837002021491
 MonoBehaviour:
   m_ObjectHideFlags: 0

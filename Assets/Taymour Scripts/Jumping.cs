@@ -36,6 +36,7 @@ public class Jumping : MonoBehaviour
     [Tooltip("Allows the game to identify what is the ground")]
     [SerializeField] private LayerMask Ground;
 
+    public RopeSwing rope;
 
 
     void FixedUpdate()
@@ -65,7 +66,7 @@ public class Jumping : MonoBehaviour
 
     public void RelaxJump(InputAction.CallbackContext context)
     {
-        if(context.performed && IsGrounded(RelaxedPlayer))
+        if(context.performed && IsGrounded(RelaxedPlayer) && !rope.pendulumPhase && !rope.powerupActive)
         {
             RelaxisJumping = true;
         }
@@ -73,7 +74,7 @@ public class Jumping : MonoBehaviour
 
     public void TensionJump(InputAction.CallbackContext context)
     {
-        if (context.performed && IsGrounded(TensionedPlayer))
+        if (context.performed && IsGrounded(TensionedPlayer) && !rope.pendulumPhase && !rope.powerupActive)
         {
             TensionisJumping = true;
         }

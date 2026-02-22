@@ -12,33 +12,32 @@ public class Jumping : MonoBehaviour
     [Tooltip("Determine both character's jump force")]
     public float JumpForce = 10f;
 
+    [Tooltip("Determine gravity effect on rigid bodies")]
+    public float Gravity = 1f;
+
     private bool RelaxisJumping;
     private bool TensionisJumping;
 
     [Tooltip("Relax character's Physics")]
-    [SerializeField] private Rigidbody2D RelaxedPlayer;
+    public Rigidbody2D RelaxedPlayer;
 
     [Tooltip("Tension character's Physics")]
-    [SerializeField] private Rigidbody2D TensionedPlayer;
+    public Rigidbody2D TensionedPlayer;
 
     [Header("Check if Both characters touch ground")]
     //Required Elements for isGrounded() check
 
     [Tooltip("Represents the feet dimensions for both players")]
-    [SerializeField] private Vector2 boxSize;
+    public Vector2 boxSize;
 
     [Tooltip("Shows the feet position length")]
-    [SerializeField] private float CastDistance;
+    public float CastDistance;
 
     [Tooltip("Allows the game to identify what is the ground")]
     [SerializeField] private LayerMask Ground;
 
-    [Header("Audio Options")]
-    [Tooltip("Relax character's jumping audio")]
-    [SerializeField] private AudioSource RelaxJumpingAudio;
+    public RopeSwing rope;
 
-    [Tooltip("Relax character's jumping audio")]
-    [SerializeField] private AudioSource TensionJumpingAudio;
 
     void FixedUpdate()
     {
@@ -53,23 +52,31 @@ public class Jumping : MonoBehaviour
             TensionedPlayer.linearVelocityY = JumpForce;
             TensionisJumping = false;
         }
+
+        if(!IsGrounded(TensionedPlayer))
+        {
+            TensionedPlayer.linearVelocityY -= Gravity;
+        }
+
+        if (!IsGrounded(RelaxedPlayer))
+        {
+            RelaxedPlayer.linearVelocityY -= Gravity;
+        }
     }
 
     public void RelaxJump(InputAction.CallbackContext context)
     {
-        if(context.performed && IsGrounded(RelaxedPlayer))
+        if(context.performed && IsGrounded(RelaxedPlayer) && !rope.pendulumPhase && !rope.powerupActive)
         {
             RelaxisJumping = true;
-            FindFirstObjectByType<AudioManager>().Play("R_jump");
         }
     }
 
     public void TensionJump(InputAction.CallbackContext context)
     {
-        if (context.performed && IsGrounded(TensionedPlayer))
+        if (context.performed && IsGrounded(TensionedPlayer) && !rope.pendulumPhase && !rope.powerupActive)
         {
             TensionisJumping = true;
-            FindFirstObjectByType<AudioManager>().Play("T_jump");
         }
     }
 

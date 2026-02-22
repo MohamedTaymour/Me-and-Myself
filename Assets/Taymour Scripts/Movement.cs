@@ -33,14 +33,6 @@ public class Movement : MonoBehaviour
     [Tooltip("Tension character's transformation")]
     [SerializeField] private Transform TensionTransform;
 
-    [Header("Audio Options")]
-    [Tooltip("Relax character's movement audio")]
-    [SerializeField] private AudioSource RelaxMovementAudio;
-
-    [Tooltip("Tension character's movement audio")]
-    [SerializeField] private AudioSource TensionMovementAudio;
-
-    private AudioManager audioManager;
     private Jumping jumping;
 
     private void Start()
@@ -90,11 +82,6 @@ public class Movement : MonoBehaviour
                 FlipRelaxed();
 
             RelaxMovementDirection = -1;
-
-            if (jumping.IsGrounded(RelaxedPlayer))
-            {
-                audioManager.PlayLoop("R_walk");
-            }
         }
 
         else if (movementX > 0)
@@ -103,17 +90,10 @@ public class Movement : MonoBehaviour
                 FlipRelaxed();
 
             RelaxMovementDirection = 1;
-
-            if (jumping.IsGrounded(RelaxedPlayer))
-            {
-                audioManager.PlayLoop("R_walk");
-            }
         }
         else
         {
             RelaxMovementDirection = 0;
-
-            audioManager.Stop("R_walk");
         }
     }
 
@@ -127,11 +107,6 @@ public class Movement : MonoBehaviour
                 FlipTensioned();
 
             TensionMovementDirection = -1;
-
-            if (jumping.IsGrounded(TensionedPlayer))
-            {
-                audioManager.PlayLoop("T_walk");
-            }
         }
 
         else if (movementX > 0)
@@ -140,17 +115,10 @@ public class Movement : MonoBehaviour
                 FlipTensioned();
 
             TensionMovementDirection = 1;
-
-            if (jumping.IsGrounded(TensionedPlayer))
-            {
-                audioManager.PlayLoop("T_walk");
-            }
         }
         else
         {
             TensionMovementDirection = 0;
-
-            audioManager.Stop("T_walk");
         }
     }
 }

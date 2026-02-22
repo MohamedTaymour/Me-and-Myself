@@ -463,6 +463,11 @@ MonoBehaviour:
     volume: 1
     pitch: 1.22
     source: {fileID: 0}
+  - name: UpStream
+    clip: {fileID: 8300000, guid: 2bf5f8eab1d4b2c4d9e876133b0f618b, type: 3}
+    volume: 1
+    pitch: 1.22
+    source: {fileID: 0}
 --- !u!1 &1434480309 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6333284300406220877, guid: 3b6a46af9245d4f44b7e85f55dfde5ab, type: 3}

@@ -1,4 +1,3 @@
-using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -41,7 +40,6 @@ public class AnimationDebugger : MonoBehaviour
 
     void Update()
     {
-        Debug.Log($"[{gameObject.name}] PlayerType: {playerType} | moveInput: {moveInput}");
         HandleInput();
         HandleStateLogic();
     }

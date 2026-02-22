@@ -1,0 +1,28 @@
+using UnityEngine;
+
+public class LeverObject : MonoBehaviour
+{
+    public bool isOn = false;
+
+    public Sprite spriteUp;
+    public Sprite spriteDown;
+
+    public SpriteRenderer sr;
+
+    void Start()
+    {
+        sr = GetComponent<SpriteRenderer>();
+    }
+
+    public void Toggle()
+    {
+        isOn = !isOn;
+        sr.sprite = isOn ? spriteUp : spriteDown;
+    }
+
+    public void ResetState()
+    {
+        isOn = false;
+        sr.sprite = spriteDown;
+    }
+}

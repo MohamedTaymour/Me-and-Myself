@@ -33,13 +33,6 @@ public class Movement : MonoBehaviour
     [Tooltip("Tension character's transformation")]
     [SerializeField] private Transform TensionTransform;
 
-    [Header("Audio Options")]
-    [Tooltip("Relax character's movement audio")]
-    [SerializeField] private AudioSource RelaxMovementAudio;
-
-    [Tooltip("Tension character's movement audio")]
-    [SerializeField] private AudioSource TensionMovementAudio;
-
     private AudioManager audioManager;
     private Jumping jumping;
 

@@ -8,15 +8,18 @@ public class HowToPlay : MonoBehaviour
 
     void Start()
     {
-        // Make sure panel is closed at start
         if (howToPlayPanel != null)
             howToPlayPanel.SetActive(false);
+
+        // Ensure main menu is active at start
+        if (mainMenuPanel != null)
+            mainMenuPanel.SetActive(true);
     }
 
     public void OpenPanel()
     {
-        if (howToPlayPanel != null) howToPlayPanel.SetActive(true);
         if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
+        if (howToPlayPanel != null) howToPlayPanel.SetActive(true);
     }
 
     public void ClosePanel()
@@ -27,7 +30,7 @@ public class HowToPlay : MonoBehaviour
 
     void Update()
     {
-        if (howToPlayPanel == null) return; // prevent null error
+        if (howToPlayPanel == null) return;
         if (Keyboard.current.escapeKey.wasPressedThisFrame && howToPlayPanel.activeSelf)
             ClosePanel();
     }

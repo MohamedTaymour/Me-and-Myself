@@ -33,14 +33,6 @@ public class Movement : MonoBehaviour
     [Tooltip("Tension character's transformation")]
     [SerializeField] private Transform TensionTransform;
 
-    private Jumping jumping;
-
-    private void Start()
-    {
-        jumping = GetComponent<Jumping>();
-        audioManager = FindFirstObjectByType<AudioManager>();
-    }
-
     // Update is called once per frame
     void Update()
     {

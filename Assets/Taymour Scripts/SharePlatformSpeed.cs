@@ -6,6 +6,7 @@ public class SharePlatformSpeed : MonoBehaviour
     private Transform Platform;
 
     [SerializeField] private Transform parent;
+    [SerializeField] private MonoBehaviour coroutineRunner; // assign any always-active object
 
     private void Start()
     {
@@ -16,7 +17,7 @@ public class SharePlatformSpeed : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(SetParentNextFrame(other.transform, Platform));
+            coroutineRunner.StartCoroutine(SetParentNextFrame(other.transform, Platform));
         }
     }
 
@@ -24,7 +25,7 @@ public class SharePlatformSpeed : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(SetParentNextFrame(other.transform, parent));
+            coroutineRunner.StartCoroutine(SetParentNextFrame(other.transform, parent));
         }
     }
 

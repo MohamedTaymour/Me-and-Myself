@@ -69,7 +69,10 @@ public class Jumping : MonoBehaviour
         if(context.performed && IsGrounded(RelaxedPlayer) && !rope.pendulumPhase && !rope.powerupActive)
         {
             RelaxisJumping = true;
+            FindFirstObjectByType<AudioManager>().Play("R_jump");
+
         }
+
     }
 
     public void TensionJump(InputAction.CallbackContext context)
@@ -77,6 +80,7 @@ public class Jumping : MonoBehaviour
         if (context.performed && IsGrounded(TensionedPlayer) && !rope.pendulumPhase && !rope.powerupActive)
         {
             TensionisJumping = true;
+            FindFirstObjectByType<AudioManager>().Play("T_jump");
         }
     }
 

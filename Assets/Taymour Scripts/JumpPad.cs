@@ -12,6 +12,15 @@ public class JumpPad : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = FindFirstObjectByType<AudioManager>();
+        if (audioManager == null)
+            Debug.LogError("AudioManager not found!");
+    }
+
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,6 +44,11 @@ public class JumpPad : MonoBehaviour
                 maxHeight = incomingSpeed * bounceMultiplier;
             
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, maxHeight);
+
+            if (audioManager != null)
+            {
+                audioManager.Play("UpStream");
+            }
         }
     }
 }

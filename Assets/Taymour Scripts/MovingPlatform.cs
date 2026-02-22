@@ -28,7 +28,6 @@ public class MovingPlatform : MonoBehaviour
     void Start()
     {
         currentTarget = Top;
-
         requiresButton = button != null;
         requiresLever = lever != null;
     }
@@ -43,11 +42,9 @@ public class MovingPlatform : MonoBehaviour
         if (Vector3.Distance(Platform.transform.position, currentTarget.position) < 0.01f)
         {
             Platform.transform.position = currentTarget.position;
-
-            if (currentTarget == Top)
-                currentTarget = Bottom;
-            else
-                currentTarget = Top;
+            currentTarget = (currentTarget == Top) ? Bottom : Top;
         }
     }
+
+    
 }

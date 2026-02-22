@@ -4,33 +4,30 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    [Header("UI Elements")]
-    public GameObject interactButton;
-    public GameObject dialoguePanel;
-
     private void Awake()
     {
         Instance = this;
     }
 
-    public void ShowInteractButton()
+    public void ShowInteractButton(GameObject button)
     {
-        interactButton.SetActive(true);
+        button.SetActive(true);
     }
 
-    public void HideInteractButton()
+    public void HideInteractButton(GameObject button)
     {
-        interactButton.SetActive(false);
+        button.SetActive(false);
     }
 
-    public void ShowDialogue()
+    public void ShowDialogue(GameObject panel, GameObject button = null)
     {
-        dialoguePanel.SetActive(true);
-        HideInteractButton();
+        panel.SetActive(true);
+        if (button != null)
+            button.SetActive(false);
     }
 
-    public void HideDialogue()
+    public void HideDialogue(GameObject panel)
     {
-        dialoguePanel.SetActive(false);
+        panel.SetActive(false);
     }
 }

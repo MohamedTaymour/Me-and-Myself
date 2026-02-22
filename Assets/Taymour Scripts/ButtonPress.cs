@@ -8,7 +8,7 @@ public class ButtonPress : MonoBehaviour
 
     public Sprite ButtonDown;
 
-    private SpriteRenderer sr;
+    public SpriteRenderer sr;
 
     private void Start()
     {
@@ -20,14 +20,17 @@ public class ButtonPress : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isHeld = true;
-
-        sr.sprite = ButtonUp;
+        sr.sprite = ButtonDown; // was ButtonUp
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         isHeld = false;
-
-        sr.sprite = ButtonDown;
+        sr.sprite = ButtonUp; // was ButtonDown
+    }
+    public void ResetState()
+    {
+        isHeld = false;
+        sr.sprite = ButtonUp;
     }
 }

@@ -19,19 +19,19 @@ public class Jumping : MonoBehaviour
     private bool TensionisJumping;
 
     [Tooltip("Relax character's Physics")]
-    [SerializeField] private Rigidbody2D RelaxedPlayer;
+    public Rigidbody2D RelaxedPlayer;
 
     [Tooltip("Tension character's Physics")]
-    [SerializeField] private Rigidbody2D TensionedPlayer;
+    public Rigidbody2D TensionedPlayer;
 
     [Header("Check if Both characters touch ground")]
     //Required Elements for isGrounded() check
 
     [Tooltip("Represents the feet dimensions for both players")]
-    [SerializeField] private Vector2 boxSize;
+    public Vector2 boxSize;
 
     [Tooltip("Shows the feet position length")]
-    [SerializeField] private float CastDistance;
+    public float CastDistance;
 
     [Tooltip("Allows the game to identify what is the ground")]
     [SerializeField] private LayerMask Ground;

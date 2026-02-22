@@ -7,7 +7,7 @@ public class LeverObject : MonoBehaviour
     public Sprite spriteUp;
     public Sprite spriteDown;
 
-    private SpriteRenderer sr;
+    public SpriteRenderer sr;
 
     void Start()
     {
@@ -18,5 +18,11 @@ public class LeverObject : MonoBehaviour
     {
         isOn = !isOn;
         sr.sprite = isOn ? spriteUp : spriteDown;
+    }
+
+    public void ResetState()
+    {
+        isOn = false;
+        sr.sprite = spriteDown;
     }
 }

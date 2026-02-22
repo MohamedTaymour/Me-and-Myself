@@ -30,5 +30,11 @@ public class Resettable : MonoBehaviour
         }
 
         gameObject.SetActive(true);
+
+        var lever = GetComponent<LeverObject>();
+        if (lever != null) lever.ResetState();
+
+        var button = GetComponent<ButtonPress>();
+        if (button != null) button.ResetState();
     }
 }

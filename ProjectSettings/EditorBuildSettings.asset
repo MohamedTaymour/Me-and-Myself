@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Abdallah.unity
     guid: 8d63eb4c30f72474998659cf97b097b9
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: 375970e3f257ec9448ee7cb1b8a3bfe4
+  - enabled: 1
+    path: Assets/Scenes/Level 3.unity
+    guid: 46d0699c16d06c34381045022b550646
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

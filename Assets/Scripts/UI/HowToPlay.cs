@@ -10,10 +10,6 @@ public class HowToPlay : MonoBehaviour
     {
         if (howToPlayPanel != null)
             howToPlayPanel.SetActive(false);
-
-        // Ensure main menu is active at start
-        if (mainMenuPanel != null)
-            mainMenuPanel.SetActive(true);
     }
 
     public void OpenPanel()
